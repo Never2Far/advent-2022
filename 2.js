@@ -1,4 +1,4 @@
-const inputArr = input.split(/\r?\n/).map((line) => line.split(" "));
+const inputArr = require("fs").readFileSync("inputDay2.txt", 'utf8').split(/\r?\n/).map((line) => line.split(" "));
 
 let score = 0;
 
