@@ -58,7 +58,7 @@ const getDirectorySize = (dir = root) => {
 };
 
 const getSizePart2 = (dir = root) => {
-  let ans = 25425424525;
+  let ans = 25425424525; // random number that's for sure bigger than the answer
   if (getDirectorySize(dir) >= getDirectorySize() - 40000000) {
     ans = getDirectorySize(dir);
   }
