@@ -1,14 +1,7 @@
 let part2Mod = 1;
-let monkeys = require("fs")
-  .readFileSync("inputDay11.txt", "utf8")
-  .split(/\n{2,}/g)
-  .map((monkey) => monkey.split(/\r?\n/))
-  .map((monkey) => {
+let monkeys = require("fs").readFileSync("inputDay11.txt", "utf8").split(/\n{2,}/g).map((monkey) => monkey.split(/\r?\n/)).map((monkey) => {
     return {
-      startingItems: monkey[1]
-        .split(": ")[1]
-        .split(", ")
-        .map((item) => parseInt(item)),
+      startingItems: monkey[1].split(": ")[1].split(", ").map((item) => parseInt(item)),
       operation: (old) => {
         const eq = monkey[2].split(": new = ")[1].split(" ");
         const x = eq[0] === "old" ? old : parseInt(eq[0]);
@@ -41,13 +34,9 @@ monkeys.forEach((monkey) => {
   part2Mod *= monkey.part2Mod;
 });
 
-Array(10000)
-  .fill(0)
-  .forEach(() => {
+Array(10000).fill(0).forEach(() => {
     monkeys.forEach((monkey) => {
-      Array(monkey.startingItems.length)
-        .fill(0)
-        .forEach(() => {
+      Array(monkey.startingItems.length).fill(0).forEach(() => {
           const item = monkey.startingItems.shift();
           let newItem = monkey.operation(item);
           newItem %= part2Mod;
@@ -57,10 +46,8 @@ Array(10000)
     });
   });
 
-const activeCounts = monkeys
-  .map((monkey) => {
+const activeCounts = monkeys.map((monkey) => {
     return monkey.inspectedCount;
-  })
-  .sort((a, b) => b - a);
+  }).sort((a, b) => b - a);
 
 console.log(activeCounts[0] * activeCounts[1]);
