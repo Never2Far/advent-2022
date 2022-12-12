@@ -12,7 +12,7 @@ let x = 1;
 let i = 0;
 let add = false;
 let output = Array(240).fill("?");
-while (cycleToCheck <= 220 && i < inputArr.length) {
+while (i < inputArr.length) {
   const line = inputArr[i];
   output[cycleCount - 1] = x;
   if (line.length === 1) {
